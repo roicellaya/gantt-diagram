@@ -1,0 +1,5 @@
+<app-task
+    *ngFor="let task of tasks; trackBy:taskTrackBy; even as even"
+    [task]="task"
+    [even]="even">
+</app-task>

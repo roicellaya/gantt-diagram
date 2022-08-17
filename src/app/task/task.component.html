@@ -1,0 +1,16 @@
+<div class="columns is-vcentered is-align-items-stretch"
+    [ngClass]="{ 'has-background-white-bis': even, 'has-background-grey-lighter': !even }">
+    <div class="column is-one-quarter">
+        <div class="rows">
+            <div class="row is-full">
+                <span class="arrow-icon mr-2"><i class="fa-solid fa-chevron-right"></i></span>
+                <span class="history-type-icon mr-2"><i class="fa-solid fa-bolt"></i></span>
+                <span class="is-size-7 is-uppercase mr-2">{{ task?.idProject }}</span>
+                <span class="is-size-7 is-capitalized">{{ task?.name }}</span>
+                <span class="task-check-icon"><i class="fa-solid fa-circle-check"></i></span>
+            </div>
+            <div class="row row-bar"></div>
+        </div>
+    </div>
+    <div class="column is-three-quarter bartime-container"></div>
+</div>
