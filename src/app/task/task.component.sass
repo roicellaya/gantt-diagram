@@ -1,8 +1,17 @@
+:host
+    position: relative
+
 .columns
     margin-top: 0
 
-.columns:last-child
+.columns
     margin-bottom: 0
+
+.column
+    border-right: 2px solid #b5b5b5
+
+.column:last-child
+    border-right: none
 
 .history-type-icon
     color: white
@@ -31,5 +40,8 @@
     border-radius: 5px
 
 .bartime-container
-    padding: 1rem 0
-    box-sizing: border-box
+    position: absolute
+    top: 0
+    width: calc( 100% + 1.5rem )
+    margin-left: -0.75rem
+    height: 100%

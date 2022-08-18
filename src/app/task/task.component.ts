@@ -33,7 +33,7 @@ export class TaskComponent implements OnInit {
     if (offset < 0) {
       this.startBeforeCurrentMonth = true;
     }
-    return offset <= 0 ? '0' : offset.toString();
+    return offset <= 0 ? '25' : (offset + 25).toString();
   }
 
   private getBartimeWidth(): string {

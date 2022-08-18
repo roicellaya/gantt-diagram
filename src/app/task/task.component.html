@@ -1,6 +1,6 @@
 <div class="columns is-vcentered is-align-items-stretch"
     [ngClass]="{ 'has-background-white-bis': even, 'has-background-grey-lighter': !even }">
-    <div class="column is-one-quarter">
+    <div class="column">
         <div class="rows">
             <div class="row is-full">
                 <span class="arrow-icon mr-2"><i class="fa-solid fa-chevron-right"></i></span>
@@ -12,13 +12,16 @@
             <div class="row row-bar"></div>
         </div>
     </div>
-    <div class="column is-three-quarter bartime-container">
-        <app-bartime
-            [offset]="bartimeOffset"
-            [width]="bartimeWidth"
-            [haveLeftBorderSquare]="startBeforeCurrentMonth"
-            [haveRightBorderSquare]="endAfterLastMonth"
-        >
-        </app-bartime>
-    </div>
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+</div>
+<div class="bartime-container">
+    <app-bartime
+        [offset]="bartimeOffset"
+        [width]="bartimeWidth"
+        [haveLeftBorderSquare]="startBeforeCurrentMonth"
+        [haveRightBorderSquare]="endAfterLastMonth"
+    >
+    </app-bartime>
 </div>
