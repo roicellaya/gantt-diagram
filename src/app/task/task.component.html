@@ -12,5 +12,13 @@
             <div class="row row-bar"></div>
         </div>
     </div>
-    <div class="column is-three-quarter bartime-container"></div>
+    <div class="column is-three-quarter bartime-container">
+        <app-bartime
+            [offset]="bartimeOffset"
+            [width]="bartimeWidth"
+            [haveLeftBorderSquare]="startBeforeCurrentMonth"
+            [haveRightBorderSquare]="endAfterLastMonth"
+        >
+        </app-bartime>
+    </div>
 </div>

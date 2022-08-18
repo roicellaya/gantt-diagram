@@ -8,7 +8,7 @@ import { RoadmapHeaderComponent } from './roadmap-header/roadmap-header.componen
 import { RoadmapBodyComponent } from './roadmap-body/roadmap-body.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskComponent } from './task/task.component';
-import { BartimeDirective } from './directives/bartime.directive';
+import { BartimeComponent } from './bartime/bartime.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { BartimeDirective } from './directives/bartime.directive';
     RoadmapBodyComponent,
     TaskListComponent,
     TaskComponent,
-    BartimeDirective
+    BartimeComponent
   ],
   imports: [
     BrowserModule,
