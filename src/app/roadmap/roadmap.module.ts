@@ -1,13 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RoadmapRoutingModule } from './roadmap-routing.module';
 import { RoadmapComponent } from './roadmap.component';
-import { RoadmapHeaderComponent } from './components/roadmap-header/roadmap-header.component';
-import { RoadmapBodyComponent } from './components/roadmap-body/roadmap-body.component';
-import { TaskListComponent } from './components/task-list/task-list.component';
-import { TaskComponent } from './components/task/task.component';
-import { BartimeComponent } from './components/bartime/bartime.component';
+import {
+  RoadmapBodyComponent,
+  RoadmapHeaderComponent,
+  TaskComponent,
+  TaskListComponent
+} from './components';
+
+import { SharedModule } from '../shared';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,18 @@ import { BartimeComponent } from './components/bartime/bartime.component';
     RoadmapHeaderComponent,
     RoadmapBodyComponent,
     TaskListComponent,
-    TaskComponent,
-    BartimeComponent
+    TaskComponent
   ],
   imports: [
     CommonModule,
-    RoadmapRoutingModule
+    RoadmapRoutingModule,
+    SharedModule
   ]
 })
-export class RoadmapModule { }
+export class RoadmapModule {
+  constructor(@Optional() @SkipSelf() parentModule?: RoadmapModule) {
+    if (parentModule) {
+      throw new Error('RoadmapModule already loaded!');
+    }
+  }
+}

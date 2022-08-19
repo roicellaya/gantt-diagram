@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { compareAsc, differenceInDays, lastDayOfMonth } from "date-fns";
-import { Task } from '../../models/task.model';
+import { Task } from '../../models';
 
 @Component({
   selector: 'app-task',
