@@ -17,8 +17,8 @@ export class TaskListComponent implements OnInit {
       id: '1',
       idProject: 'MAC-12',
       name: 'Marketing',
-      start: new Date(2022, 6, 21),
-      end: new Date(2022, 7, 12)
+      start: new Date(2022, 7, 31),
+      end: new Date(2022, 8, 12)
     };
     const task2: Task = {
       id: '2',
