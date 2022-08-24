@@ -21,7 +21,7 @@ export class RoadmapComponent implements OnInit {
     const months: string[] = [];
     let month: number;
     let date: Date;
-    for(let index = 0; index <= 2; index++) {
+    for (let index = 0; index <= 2; index++) {
       month = new Date().getMonth() + index;
       date = new Date(year, month, day);
       const monthName = date.toLocaleString(

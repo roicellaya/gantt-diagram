@@ -9,8 +9,7 @@ describe('BartimeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ BartimeComponent ]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BartimeComponent);
     component = fixture.componentInstance;

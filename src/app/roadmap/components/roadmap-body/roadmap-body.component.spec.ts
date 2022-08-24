@@ -9,8 +9,7 @@ describe('RoadmapBodyComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RoadmapBodyComponent ]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RoadmapBodyComponent);
     component = fixture.componentInstance;

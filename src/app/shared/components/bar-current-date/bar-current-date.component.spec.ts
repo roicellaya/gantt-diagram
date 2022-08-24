@@ -9,8 +9,7 @@ describe('BarCurrentDateComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ BarCurrentDateComponent ]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BarCurrentDateComponent);
     component = fixture.componentInstance;
