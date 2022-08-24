@@ -7,6 +7,7 @@ import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 })
 export class BarCurrentDateComponent implements OnInit {
   @Input() offset: string = '';
+  today: number = Date.now();
 
   constructor(
     private element: ElementRef,

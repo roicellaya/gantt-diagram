@@ -28,12 +28,12 @@ export class TaskComponent implements OnInit {
     const currentDate = new Date();
     const currentMonthInitialDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
     offset = this.task?.start ?
-             differenceInDays(this.task?.start || 0, currentMonthInitialDate) * 0.9 : 0;
+             differenceInDays(this.task?.start || 0, currentMonthInitialDate) : 0;
     
     if (offset < 0) {
       this.startBeforeCurrentMonth = true;
     }
-    return offset + 25 * 0.9 <= 25 ? '25' : (offset + 25 * 0.9).toString();
+    return offset <= 0 ? '25' : (offset * 0.83 + 25).toString();
   }
 
   private getBartimeWidth(): string {
@@ -43,11 +43,11 @@ export class TaskComponent implements OnInit {
     const datesCompared = compareAsc(currentMonthInitialDate, this.task?.start || 0);
     if (datesCompared <= 0) {
       width = (this.task?.start && this.task?.end) ?
-              differenceInDays(this.task.end, this.task.start) * 0.9 : 0;
+              (differenceInDays(this.task.end, this.task.start) + 1) * 0.83 : 0;
     } else {
       const previousMonthLastDate = lastDayOfMonth(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
       width = (this.task?.start && this.task?.end) ?
-              (differenceInDays(this.task.end, this.task.start) - differenceInDays(previousMonthLastDate, this.task.start)) * 0.9 : 0;
+              (differenceInDays(this.task.end, this.task.start) - differenceInDays(previousMonthLastDate, this.task.start) + 1) * 0.83 : 0;
     }
 
     if (parseFloat(this.bartimeOffset) + width > 100) {

@@ -18,8 +18,10 @@ export class RoadmapBodyComponent implements OnInit {
   private getBarCurrentDateOffset(): string {
     const currentDate = new Date();
     const currentMonthInitialDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    const offset: number = differenceInDays(currentDate, currentMonthInitialDate) * 0.9;
-    return (offset + 25 * 0.9).toString();
+    const offset: number = (differenceInDays(currentDate, currentMonthInitialDate) + 1);
+    console.log(differenceInDays(currentDate, currentMonthInitialDate));
+    
+    return (offset * 0.83 + 25).toString();
   }
 
 }

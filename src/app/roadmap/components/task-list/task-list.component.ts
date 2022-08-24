@@ -17,15 +17,15 @@ export class TaskListComponent implements OnInit {
       id: '1',
       idProject: 'MAC-12',
       name: 'Marketing',
-      start: new Date(2022, 7, 31),
-      end: new Date(2022, 8, 12)
+      start: new Date(2022, 7, 1),
+      end: new Date(2022, 7, 30)
     };
     const task2: Task = {
       id: '2',
       idProject: 'MAC-19',
       name: 'Referral',
-      start: new Date(2022, 7, 3),
-      end: new Date(2022, 7, 30)
+      start: new Date(2022, 8, 1),
+      end: new Date(2022, 8, 30)
     };
     const task3: Task = {
       id: '3',

@@ -11,6 +11,8 @@ export class BartimeComponent implements OnInit{
   @Input() width: string = '';
   @Input() haveLeftBorderSquare: boolean = false;
   @Input() haveRightBorderSquare: boolean = false;
+  @Input() startDate?: Date;
+  @Input() endDate?: Date;
 
   constructor(
     private element: ElementRef,
