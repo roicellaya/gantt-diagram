@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { differenceInDays } from 'date-fns';
 
 @Component({
   selector: 'app-roadmap-body',
@@ -12,14 +11,12 @@ export class RoadmapBodyComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.barCurrentDateOffset = this.getBarCurrentDateOffset();
+    this.barCurrentDateOffset = this.getBarCurrentDateOffset(new Date());
   }
 
-  private getBarCurrentDateOffset(): string {
-    const currentDate = new Date();
-    const currentMonthInitialDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    const offset: number = (differenceInDays(currentDate, currentMonthInitialDate) + 1);
-    console.log(differenceInDays(currentDate, currentMonthInitialDate));
+  getBarCurrentDateOffset(date: Date = new Date()): string {
+    const currentMonthInitialDate = new Date(date.getFullYear(), date.getMonth(), 1);
+    const offset: number = date.getDate();
     
     return (offset * 0.83 + 25).toString();
   }

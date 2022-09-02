@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'app-bartime',
@@ -6,32 +15,33 @@ import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Renderer
   styleUrls: ['./bartime.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BartimeComponent implements OnInit{
+export class BartimeComponent implements OnInit, AfterViewInit {
   @Input() offset: string = '';
   @Input() width: string = '';
   @Input() haveLeftBorderSquare: boolean = false;
   @Input() haveRightBorderSquare: boolean = false;
   @Input() startDate?: Date;
   @Input() endDate?: Date;
+  @ViewChild('bartimeDiv') bartimeDiv?: ElementRef;
 
   constructor(
-    private element: ElementRef,
     private renderer: Renderer2
   ) { }
 
-  ngOnInit(): void {
-    let div = this.element.nativeElement.childNodes[0];
-    this.renderer.setStyle(div, 'margin-left', this.offset + '%');
-    this.renderer.setStyle(div, 'width', this.width + '%');
+  ngOnInit(): void { }
+
+  ngAfterViewInit(): void {
+    this.renderer.setStyle(this.bartimeDiv?.nativeElement, 'margin-left', this.offset + '%');
+    this.renderer.setStyle(this.bartimeDiv?.nativeElement, 'width', this.width + '%');
 
     if (this.haveLeftBorderSquare) {
-      this.renderer.setStyle(div, 'border-top-left-radius', '0');
-      this.renderer.setStyle(div, 'border-bottom-left-radius', '0');
+      this.renderer.setStyle(this.bartimeDiv?.nativeElement, 'border-top-left-radius', '0');
+      this.renderer.setStyle(this.bartimeDiv?.nativeElement, 'border-bottom-left-radius', '0');
     }
 
     if (this.haveRightBorderSquare) {
-      this.renderer.setStyle(div, 'border-top-right-radius', '0');
-      this.renderer.setStyle(div, 'border-bottom-right-radius', '0');
+      this.renderer.setStyle(this.bartimeDiv?.nativeElement, 'border-top-right-radius', '0');
+      this.renderer.setStyle(this.bartimeDiv?.nativeElement, 'border-bottom-right-radius', '0');
     }
   }
 }

@@ -13,10 +13,15 @@ describe('RoadmapHeaderComponent', () => {
 
     fixture = TestBed.createComponent(RoadmapHeaderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should ngOnInit', () => {
+    component.ngOnInit();
+    expect(component.firstCol).toBe('Epic');
   });
 });

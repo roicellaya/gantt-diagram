@@ -3,8 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-roadmap',
   templateUrl: './roadmap.component.html',
-  styleUrls: ['./roadmap.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./roadmap.component.sass']
 })
 export class RoadmapComponent implements OnInit {
   months: string[] = [];
@@ -12,22 +11,20 @@ export class RoadmapComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.months = this.getMonths();
+    this.months = this.getMonths(new Date());
   }
 
-  private getMonths() {
-    const year: number = new Date().getFullYear();
-    const day: number = new Date().getDate();
+  getMonths(date: Date = new Date()): string[] {
+    const year: number = date.getFullYear();
     const months: string[] = [];
-    let month: number;
-    let date: Date;
-    for (let index = 0; index <= 2; index++) {
-      month = new Date().getMonth() + index;
-      date = new Date(year, month, day);
+    let monthCount: number = 0;
+    while (monthCount < 3) {
       const monthName = date.toLocaleString(
         'default', { month: 'long' }
       );
       months.push(monthName);
+      date = new Date(year, date.getMonth() + 1, 1);
+      monthCount += 1;
     }
     return months;
   }

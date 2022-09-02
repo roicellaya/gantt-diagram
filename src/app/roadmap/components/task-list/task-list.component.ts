@@ -17,15 +17,15 @@ export class TaskListComponent implements OnInit {
       id: '1',
       idProject: 'MAC-12',
       name: 'Marketing',
-      start: new Date(2022, 7, 1),
-      end: new Date(2022, 7, 30)
+      start: new Date(2022, 8, 1),
+      end: new Date(2022, 8, 30)
     };
     const task2: Task = {
       id: '2',
       idProject: 'MAC-19',
       name: 'Referral',
-      start: new Date(2022, 8, 1),
-      end: new Date(2022, 8, 30)
+      start: new Date(2022, 8, 15),
+      end: new Date(2022, 8, 24)
     };
     const task3: Task = {
       id: '3',
@@ -38,7 +38,7 @@ export class TaskListComponent implements OnInit {
     this.tasks.push(task1, task2, task3);
   }
 
-  taskTrackBy(index: number, task: Task) {
+  taskTrackBy(index: number, task: Task): string {
     return task.id;
   }
 

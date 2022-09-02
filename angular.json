@@ -104,8 +104,7 @@
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": [],
-            "codeCoverage": true
+            "scripts": []
           }
         },
         "lint": {
