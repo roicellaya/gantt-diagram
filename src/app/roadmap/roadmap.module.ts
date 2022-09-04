@@ -26,10 +26,4 @@ import { SharedModule } from '../shared';
     SharedModule
   ]
 })
-export class RoadmapModule {
-  constructor(@Optional() @SkipSelf() parentModule?: RoadmapModule) {
-    if (parentModule) {
-      throw new Error('RoadmapModule already loaded!');
-    }
-  }
-}
+export class RoadmapModule { }

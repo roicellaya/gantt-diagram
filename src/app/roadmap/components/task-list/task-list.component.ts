@@ -7,7 +7,7 @@ import { TaskService } from '../../services';
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
@@ -18,21 +18,39 @@ export class TaskListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe({
-      next: (response: GeneralResponse) => {
+    // const taskObserver = {
+    //   next: (response: GeneralResponse) => {
+    //     response.data.map((value: any) => {
+    //       let task: Task = { ...value };
+    //       task.start = new Date(value.start);
+    //       task.end = new Date(value.end);
+    //       this.tasks.push(task);
+    //     });
+    //     this.ref.markForCheck();
+    //   },
+    //   error: (error: HttpErrorResponse) => {
+    //     //TODO: handle error
+    //     console.error(error);
+    //     this.ref.markForCheck();
+    //   },
+    //   complete: () => this.ref.markForCheck()
+    // };
+    this.taskService.getTasks().subscribe(
+      (response: GeneralResponse) => {
         response.data.map((value: any) => {
           let task: Task = { ...value };
           task.start = new Date(value.start);
           task.end = new Date(value.end);
           this.tasks.push(task);
         });
-        this.ref.markForCheck();
+        // this.ref.markForCheck();
       },
-      error: (error: HttpErrorResponse) => {
+      (error: HttpErrorResponse) => {
         //TODO: handle error
         console.error(error);
+        // this.ref.markForCheck();
       }
-    });
+    );
   }
 
   taskTrackBy(index: number, task: Task): string {
