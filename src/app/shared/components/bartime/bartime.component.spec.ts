@@ -30,7 +30,7 @@ describe('BartimeComponent', () => {
     component.width = '33.3';
     component.ngAfterViewInit();
     
-    //TODO: reducir a un solo expect
+    //TODO: shorten to one expect
     expect(renderer.setStyle).toHaveBeenCalledWith(
       component.bartimeDiv?.nativeElement,
       'margin-left',
@@ -48,7 +48,7 @@ describe('BartimeComponent', () => {
     component.haveLeftBorderSquare = true;
     component.ngAfterViewInit();
     
-    //TODO: reducir a un solo expect
+    //TODO: shorten to one expect
     expect(renderer.setStyle).toHaveBeenCalledWith(
       component.bartimeDiv?.nativeElement,
       'border-top-left-radius',
@@ -66,7 +66,7 @@ describe('BartimeComponent', () => {
     component.haveRightBorderSquare = true;
     component.ngAfterViewInit();
     
-    //TODO: reducir a un solo expect
+    //TODO: shorten to one expect
     expect(renderer.setStyle).toHaveBeenCalledWith(
       component.bartimeDiv?.nativeElement,
       'border-top-right-radius',

@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Task } from '../../models';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { GeneralResponse, Task } from '../../models';
+import { TaskService } from '../../services';
 
 @Component({
   selector: 'app-task-list',
@@ -10,32 +12,27 @@ import { Task } from '../../models';
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
 
-  constructor() { }
+  constructor(
+    private taskService: TaskService,
+    private ref: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
-    const task1: Task = {
-      id: '1',
-      idProject: 'MAC-12',
-      name: 'Marketing',
-      start: new Date(2022, 8, 1),
-      end: new Date(2022, 8, 30)
-    };
-    const task2: Task = {
-      id: '2',
-      idProject: 'MAC-19',
-      name: 'Referral',
-      start: new Date(2022, 8, 15),
-      end: new Date(2022, 8, 24)
-    };
-    const task3: Task = {
-      id: '3',
-      idProject: 'MAC-24',
-      name: 'Blocker',
-      start: new Date(2022, 8, 5),
-      end: new Date(2022, 10, 30)
-    };
-
-    this.tasks.push(task1, task2, task3);
+    this.taskService.getTasks().subscribe({
+      next: (response: GeneralResponse) => {
+        response.data.map((value: any) => {
+          let task: Task = { ...value };
+          task.start = new Date(value.start);
+          task.end = new Date(value.end);
+          this.tasks.push(task);
+        });
+        this.ref.markForCheck();
+      },
+      error: (error: HttpErrorResponse) => {
+        //TODO: handle error
+        console.error(error);
+      }
+    });
   }
 
   taskTrackBy(index: number, task: Task): string {
