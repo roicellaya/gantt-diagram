@@ -26,7 +26,6 @@ describe('RoadmapBodyComponent', () => {
 
     fixture = TestBed.createComponent(RoadmapBodyComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
   });
 
   it('should create', () => {

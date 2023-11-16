@@ -13,7 +13,6 @@ describe('RoadmapHeaderComponent', () => {
 
     fixture = TestBed.createComponent(RoadmapHeaderComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
   });
 
   it('should create', () => {

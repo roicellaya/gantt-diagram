@@ -17,7 +17,6 @@ describe('BarCurrentDateComponent', () => {
 
     fixture = TestBed.createComponent(BarCurrentDateComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
     renderer = fixture.debugElement.injector.get(Renderer2);
     element = fixture.debugElement.injector.get(ElementRef);
   });

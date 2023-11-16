@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskListComponent } from './task-list.component';
 import { Task } from '../../models';
+import { TaskService } from '../../services';
+import { of, throwError } from 'rxjs';
 
 @Component({ selector: 'app-task', template: '' })
 class TaskStub {
@@ -13,26 +15,29 @@ class TaskStub {
 describe('TaskListComponent', () => {
   let component: TaskListComponent;
   let fixture: ComponentFixture<TaskListComponent>;
+  let taskServiceSpy: any = jasmine.createSpyObj('TaskService', ['getTasks']);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
         TaskListComponent,
         TaskStub
+      ],
+      providers: [
+        { provide: TaskService, useValue: taskServiceSpy }
       ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TaskListComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should ngOnInit', () => {
-    const expectedTasks: Task[] = [
+  it('should ngOnInit / return tasks list', () => {
+    const responseGetTasks: Task[] = [
       {
         id: '1',
         idProject: 'MAC-12',
@@ -55,9 +60,25 @@ describe('TaskListComponent', () => {
         end: new Date(2022, 10, 30)
       }
     ];
+    const responseMock = {
+      description: 'OK',
+      data: responseGetTasks
+    };
+    taskServiceSpy.getTasks.and.returnValue(of(responseMock));
     component.ngOnInit();
-    
-    expect(component.tasks).toEqual(expectedTasks);
+    expect(component.tasks).toEqual(responseGetTasks);
+  });
+
+  it('should ngOnInit / return error', () => {
+    const responseMock = {
+      description: 'ERROR',
+      data: []
+    }
+
+    spyOn(console, 'error');
+    taskServiceSpy.getTasks.and.returnValue(throwError(() => responseMock));
+    component.ngOnInit();
+    expect(console.error).toHaveBeenCalledWith(responseMock);
   });
 
   it('should track by right', () => {
