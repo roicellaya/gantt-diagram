@@ -5,15 +5,15 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoaderService {
-  loadingSub = new BehaviorSubject<boolean>(false);
+  loadingSub$ = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
   show(): void {
-    this.loadingSub.next(true);
+    this.loadingSub$.next(true);
   }
 
   hide(): void {
-    this.loadingSub.next(false);
+    this.loadingSub$.next(false);
   }
 }

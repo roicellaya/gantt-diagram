@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   listenLoadingService(): void {
-    this.loaderService.loadingSub
+    this.loaderService.loadingSub$
       .pipe(delay(0))
       .subscribe((loading) => {
         this.isLoading = loading;
