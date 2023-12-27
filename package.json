@@ -9,7 +9,7 @@
     "test": "ng t --no-watch",
     "test:coverage": "ng t --no-watch --code-coverage",
     "lint": "ng lint",
-    "stubs": "stubby -s 1500 -d stubs/config.yaml -w"
+    "stubs": "stubby -s 3000 -d stubs/config.yaml -w"
   },
   "private": true,
   "dependencies": {

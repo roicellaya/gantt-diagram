@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm" class="login-form">
+    <h2>Iniciar Sesión</h2>
+    <div class="field">
+        <div class="control has-icons-left">
+            <input class="input" type="email" placeholder="Email"
+                formControlName="email">
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+        </div>
+    </div>
+    <div class="field">
+        <div class="control has-icons-left">
+            <input class="input" type="password" placeholder="Password"
+                formControlName="password">
+            <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+            </span>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="button is-success" type="button"
+            [disabled]="!loginForm.valid" (click)="login()">
+            Continuar
+        </button>
+    </div>
+</form>

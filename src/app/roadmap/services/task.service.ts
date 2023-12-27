@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GeneralResponse } from '../models';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class TaskService {
   ) { }
 
   getTasks(): Observable<GeneralResponse> {
-    return this.http.get<GeneralResponse>('http://localhost:1500/api/v1/tasks');
+    const url = `${environment.apiHost}:${environment.apiPort}/api/v1/auth/tasks`;
+    return this.http.get<GeneralResponse>(url);
   }
 }
