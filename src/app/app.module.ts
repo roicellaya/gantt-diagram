@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared';
 import { CoreModule, LoaderInterceptor } from './core';
 import { LoginComponent } from './landing/login/login.component';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,11 +23,18 @@ import { LoginComponent } from './landing/login/login.component';
     CoreModule,
     ReactiveFormsModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: LoaderInterceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   exports: []
 })
