@@ -21,7 +21,9 @@ export class LoginService {
       'Content-Type':  'application/json'
     });
     return this.http.post<LoginResponse>(url, req, { headers }).pipe(
-      tap((res: LoginResponse) => this.setSession),
+      tap((res: LoginResponse) => {
+        this.setSession(res);
+      }),
       shareReplay()
     );
   }

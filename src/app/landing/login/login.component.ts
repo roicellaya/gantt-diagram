@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { LoginRequest } from 'src/app/roadmap/models/loginRequest.model';
 import { LoginResponse } from 'src/app/roadmap/models/loginResponse.model';
 import { LoginService } from '../login.service';
 
@@ -27,9 +28,11 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
-    const email = this.loginForm.get('email')?.value || '';
-    const password = this.loginForm.get('password')?.value || '';
-    this.loginService.login(email, password).subscribe({
+    const userReq: LoginRequest = {
+      username: this.loginForm.get('email')?.value || '',
+      password: this.loginForm.get('password')?.value || ''
+    };
+    this.loginService.login(userReq).subscribe({
       next: (response: LoginResponse) => {
         // TODO: guardar el token en localStorage
       },
